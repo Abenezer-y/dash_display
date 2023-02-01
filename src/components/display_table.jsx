@@ -21,7 +21,7 @@ const columns = [
 const Display_Table = () => {
   const [ride, setTable] = useState([])
   const fetchStatus = () => {
-    fetch("http://localhost:8000/rides").then(
+    fetch("https://dashapi.herokuapp.com/rides").then(
       response => {
         if (response.ok){return response.json()} throw response }).then( data => { setTable(data) }
       )}
