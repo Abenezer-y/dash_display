@@ -20,8 +20,8 @@ const columns = [
 
 const Display_Table = () => {
   const [ride, setTable] = useState([])
-  const fetchStatus = () => {
-    fetch("https://dashapi.herokuapp.com/rides").then(
+  const fetchStatus = async () => {
+    await fetch("https://dashapi.herokuapp.com/rides").then(
       response => {
         if (response.ok){return response.json()} throw response }).then( data => { setTable(data) }
       )}
