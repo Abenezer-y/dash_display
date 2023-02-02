@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 
 
 const { Header, Content } = Layout;
-const { Title } = Typography;
+const { Title, Text } = Typography;
 // tag.length > 5 ? 'geekblue' :
 
 const columns = [
@@ -20,11 +20,12 @@ const columns = [
 
 const DisplayTable = () => {
   const [ride, setTable] = useState([])
+  const [updated_on, setTime] = useState([])
 
   const fetchStatus = () => {
      fetch("https://dashapi.herokuapp.com/rides", ).then(
       response => {
-        if (response.ok){return response.json()} throw response }).then( data => { setTable(data) }
+        if (response.ok){return response.json()} throw response }).then( data => { setTable(data[0]); setTime(data[1])}
       )}
 
   useEffect(() => { fetchStatus() }, [])
@@ -36,6 +37,7 @@ const DisplayTable = () => {
         <Title style={{color: "white", fontSize:28}}>
            Lusail Winter Wonderland - Rides Status
         </Title>
+        <Text>{updated_on}</Text>
      </Typography>
       </Header>
       <Content style={{margin:5, padding:3, alignContent:'center'}}>   
