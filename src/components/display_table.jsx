@@ -40,7 +40,7 @@ const DisplayTable = () => {
       </Header>
       <Content style={{margin:5, padding:3, alignContent:'center'}}>   
 
-        <Table style={{margin:5, padding:3, alignContent:'center'}} columns={columns} dataSource={ride} />
+        <Table style={{margin:5, padding:3, alignContent:'center'}} columns={columns} dataSource={ride} pagination={false}/>
 
       </Content>
     </Layout>
