@@ -11,20 +11,22 @@ const { Title } = Typography;
 
 const Edit_Table = () => {
   const [ride, setTable] = useState([])
-  const fetchStatus = () => {
-    fetch("http://localhost:8000/rides").then(
+  const fetchStatus = async () => {
+    await fetch("http://localhost:8000/rides",).then(
       response => {
         if (response.ok){return response.json()} throw response }).then( data => { setTable(data) }
       )}
   useEffect(() => { fetchStatus() }, [])
 
 
-  const onChange =  (key, check) => {
+  const onChange =  async (key, check) => {
 
-     fetch("http://localhost:8000/editStatus", {
+     await fetch("http://localhost:8000/editStatus", {
             method: "POST",
+            mode:'cors',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({'_id': key, 'status': check})})
+      fetchStatus()
     }
 
     const columns = [
@@ -33,8 +35,8 @@ const Edit_Table = () => {
         render: (_, record) => {
           if (record.status[0] === 'Open') 
               {return ( <Switch id={record.status[1]}  checkedChildren="Open" unCheckedChildren="Closed" onChange={(checked)=>{onChange(record.key, checked)}} defaultChecked /> );}
-          else
-              {return ( <Switch id={record.status[1]}  checkedChildren="Open" unCheckedChildren="Closed"  /> );}
+          else if (record.status[0] === 'Closed') 
+              {return ( <Switch id={record.status[1]}  checkedChildren="Open" unCheckedChildren="Closed"  onChange={(checked)=>{onChange(record.key, checked)}} /> );}
             }}];
     return(
     <Layout>

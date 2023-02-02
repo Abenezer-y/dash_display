@@ -2,15 +2,13 @@ import React from 'react';
 
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './components/dash'
-import Display_Table from './components/display_table'
-import Edit_Table from './components/editable_table'
+import DisplayTable from './components/display_table'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-        <Display_Table/ >
+        <DisplayTable/ >
   </React.StrictMode>
 );
 

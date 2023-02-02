@@ -1,10 +1,10 @@
 import { Table, Typography, Tag } from 'antd';
-import { Layout, Space } from 'antd';
+import { Layout } from 'antd';
 import React, {useState, useEffect} from 'react';
 
 
-const { Header, Footer, Sider, Content } = Layout;
-const { Title, Text } = Typography;
+const { Header, Content } = Layout;
+const { Title } = Typography;
 // tag.length > 5 ? 'geekblue' :
 
 const columns = [
@@ -18,21 +18,23 @@ const columns = [
         }}];
 
 
-const Display_Table = () => {
+const DisplayTable = () => {
   const [ride, setTable] = useState([])
-  const fetchStatus = async () => {
-    await fetch("https://dashapi.herokuapp.com/rides").then(
+
+  const fetchStatus = () => {
+     fetch("https://dashapi.herokuapp.com/rides", ).then(
       response => {
         if (response.ok){return response.json()} throw response }).then( data => { setTable(data) }
       )}
+
   useEffect(() => { fetchStatus() }, [])
 
     return(
       <Layout>
-      <Header  style={{height:100, textAlign: 'center', padding:6}}>
+      <Header  style={{height:150, textAlign: 'center', padding:6}}>
       <Typography>
         <Title style={{color: "white", fontSize:28}}>
-            Wonderland Rides
+           Lusail Winter Wonderland - Rides Status
         </Title>
      </Typography>
       </Header>
@@ -45,4 +47,4 @@ const Display_Table = () => {
     
     )}
 
-export default Display_Table;
+export default DisplayTable;
