@@ -37,7 +37,7 @@ const DisplayTable = () => {
         <Title style={{color: "white", fontSize:28}}>
            Lusail Winter Wonderland - Rides Status
         </Title>
-        <Text>{updated_on}</Text>
+        <Text style={{color: "white", fontSize:15}}>{updated_on}</Text>
      </Typography>
       </Header>
       <Content style={{margin:5, padding:3, alignContent:'center'}}>   
